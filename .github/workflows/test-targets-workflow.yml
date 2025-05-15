@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [main, master]
   workflow_dispatch:
-    # branches:
-    #   - '*'
 
 jobs:
   test-targets-workflow:
@@ -25,7 +23,7 @@ jobs:
           
       - name: Trust git repo
         run: |
-          git config --global --add safe.directory /__w/ihtm-targets-template/ihtm-targets-template
+          git config --global --add safe.directory /__w/trocaire-cmam-analytics/trocaire-cmam-analytics
           
       - name: Install packages from renv.lock (with cache)
         if: ${{ !env.ACT }}  
