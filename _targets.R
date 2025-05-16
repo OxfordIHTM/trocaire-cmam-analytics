@@ -9,25 +9,15 @@ for (f in list.files(here::here("R"), full.names = TRUE)) source (f)
 ## Data targets
 data_targets <- tar_plan(
   tar_target(
-    name = onedrive_trocaire,
-    command = Microsoft365R::get_business_onedrive(),
-    cue = tar_cue("always")
-  ),
-  tar_target(
     name = trocaire_data_files_list,
-    command = onedrive_list_trocaire_files(
-      od = onedrive_trocaire, path = "trocaire_somalia_cmam"
-    ),
+    command = gdrive_list_trocaire_files(path = "cmam"),
     cue = tar_cue("always")
   ),
-  trocaire_data_file_names = file.path(
-    "trocaire_somalia_cmam", trocaire_data_files_list$name
-  ),
+  trocaire_data_file_names = trocaire_data_files_list$name,
   tar_target(
     name = trocaire_data_files,
-    command = onedrive_download_data(
-      od = onedrive_trocaire, file_name = trocaire_data_file_names, 
-      dest_dir = "data-raw"
+    command = gdrive_download_data(
+      file = trocaire_data_file_names, dest_dir = "data-raw"
     ),
     pattern = trocaire_data_file_names,
     format = "file"
