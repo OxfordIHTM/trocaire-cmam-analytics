@@ -30,20 +30,12 @@ onedrive_download_data <- function(od,
 
   if (file.exists(file_path)) {
     if (overwrite) {
-      od$download_file(
-        src = file_name, 
-        dest = file.path(dest_dir, basename(file_name)), 
-        overwrite = overwrite
-      )
+      od$download_file(src = file_name, dest = file_path, overwrite = overwrite)
     } else {
       file_path
     }
   } else {
-    od$download_file(
-      src = file_name, 
-      dest = file.path(dest_dir, basename(file_name)), 
-      overwrite = overwrite
-    )
+    od$download_file(src = file_name, dest = file_path, overwrite = overwrite)
   }
   
   file_path
