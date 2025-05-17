@@ -11,12 +11,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Trocaire Somalia Community-based Management of Acute Malnutrition (CMAM) Analytics
+# Trocaire Somalia Community-based Management of Acute Malnutrition (CMAM) Analytics <a href="https://www.tropicalmedicine.ox.ac.uk/study-with-us/msc-ihtm" target="_blank"><img src="https://podcasts.ox.ac.uk/sites/default/files/image-mirror/unpacking-fundamentals-global-health-towards-new-generation-leadership.png" width="150px" align="right" /></a> <a href="https://www.trocaire.org/" target="_blank"><img src="https://www.trocaire.org/wp-content/themes/FoundationPressN/src/assets/images/new_logo_b.png" width="150px" align="right" /></a>
 
 <!-- badges: start -->
+[![License for code](https://img.shields.io/badge/license (for code)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
+[![test targets workflow](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml)
 <!-- badges: end -->
 
-This repository is a template for a [`docker`](https://www.docker.com/get-started)-containerised, [`{targets}`](https://docs.ropensci.org/targets/)-based, [`{renv}`](https://rstudio.github.io/renv/articles/renv.html)-enabled [`R`](https://cran.r-project.org/) workflow for Trocaire Somalia's Community-based Management of Acute Malnutrition (CMAM) analytics.
+This repository is a template for a [`docker`](https://www.docker.com/get-started)-containerised, [`{targets}`](https://docs.ropensci.org/targets/)-based, [`{renv}`](https://rstudio.github.io/renv/articles/renv.html)-enabled [`R`](https://cran.r-project.org/) workflow for analytics of [Trocaire](https://www.trocaire.org/)'s Community-based Management of Acute Malnutrition (CMAM) programme in Somalia.
 
 ## About the Project
 
