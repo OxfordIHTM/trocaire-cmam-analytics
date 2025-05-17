@@ -156,6 +156,12 @@ graph LR
   end
 ```
 
+## Authors
+
+- Bisharo Europe Maalim
+- Proochista Ariana
+- Ernest Guevarra
+
 ## License
 
 All code in this workflow is released under a GPL-3.0 license. All text
