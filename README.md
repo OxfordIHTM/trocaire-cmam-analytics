@@ -7,11 +7,20 @@
 
 [![License for
 code](https://img.shields.io/badge/license%20(for%20code)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
+[![License for
+text](https://img.shields.io/badge/license%20(for%20writing)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
 [![test targets
 workflow](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml)
 <!-- badges: end -->
 
 This repository is a template for a
+[`docker`](https://www.docker.com/get-started)-containerised,
+[`{targets}`](https://docs.ropensci.org/targets/)-based,
+[`{renv}`](https://rstudio.github.io/renv/articles/renv.html)-enabled
+[`R`](https://cran.r-project.org/) workflow for analytics of
+[Trocaire](https://www.trocaire.org/)’s Community-based Management of
+Acute Malnutrition (CMAM) programme in Somalia. This repository is a
+template for a
 [`docker`](https://www.docker.com/get-started)-containerised,
 [`{targets}`](https://docs.ropensci.org/targets/)-based,
 [`{renv}`](https://rstudio.github.io/renv/articles/renv.html)-enabled
@@ -82,14 +91,39 @@ The project repository is structured as follows:
 
 ## Reproducibility
 
+### R version
+
+This project was built using `R 4.5.0`. To manage R versions, it is
+recommended to use the [`rig` software](https://github.com/r-lib/rig) to
+be able to install multiple versions of R and switch between them as
+needed.
+
 ### R package dependencies
 
-This project was built using `R 4.5.0`. This project uses the `renv`
-framework to record R package dependencies and versions. Packages and
-versions used are recorded in `renv.lock` and code used to manage
-dependencies is in `renv/` and other files in the root project
-directory. On starting an R session in the working directory, run
-`renv::restore()` to install R package dependencies.
+This project uses the `{renv}` framework to record R package
+dependencies and versions. Packages and versions used are recorded in
+`renv.lock` and code used to manage dependencies is in the `renv`
+directory and other files in the root project directory.
+
+On starting an R session in the working directory of this repository,
+first run
+
+``` r
+renv::restore()
+```
+
+to install R package dependencies.
+
+### Encryption
+
+This project uses encrypted environment variables and authentication
+keys for data retrieval managed using
+[`git-crypt`](https://github.com/AGWA/git-crypt). Collaborators will
+need to provide their GPG key to the authors to be added as an
+authorised user. To get a GPG key, [download and install
+GPG](https://www.gnupg.org/download/) and then [generate your GPG key
+pair](https://www.gnupg.org/gph/en/manual/c14.html). Then provide your
+GPG key id to the authors.
 
 ### The workflow
 
@@ -98,18 +132,31 @@ graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
   subgraph Graph
     direction LR
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x211a3b39dfafa3b3(["otp_admissions_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x7278532b2bc29c60(["otp_admissions_yearly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x51516c5a51bc6f72(["sc_admissions_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xd02d1bbb0c19e187(["sc_admissions_yearly"]):::completed
-    xefcb70fd373e934d["trocaire_cmam_data_raw"]:::completed --> x49ad837c8662aacd(["trocaire_cmam_data"]):::completed
-    xab2ef7d5cf8c2a5a["trocaire_data_files"]:::completed --> xefcb70fd373e934d["trocaire_cmam_data_raw"]:::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe1cb52acd9cb733d(["otp_admissions_by_sex_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc5234a98b2b6e9c0(["otp_admissions_by_sex_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x211a3b39dfafa3b3(["otp_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7278532b2bc29c60(["otp_admissions_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x11cedfe9795e0456(["sc_admissions_by_sex_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe8b2466bc3ec193d(["sc_admissions_by_sex_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x51516c5a51bc6f72(["sc_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xd02d1bbb0c19e187(["sc_admissions_yearly"]):::skipped
+    xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped --> x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped
+    xab2ef7d5cf8c2a5a["trocaire_data_files"]:::skipped --> xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped
     x768c673cc9e63582(["trocaire_data_files_list"]):::completed --> x2de3516cf4485518(["trocaire_data_file_names"]):::completed
-    x2de3516cf4485518(["trocaire_data_file_names"]):::completed --> xab2ef7d5cf8c2a5a["trocaire_data_files"]:::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xc8e187d255805f46(["tsfp_plw_admissions_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x77f2fe6f084dca2c(["tsfp_plw_admissions_yearly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x7b6f17b702e81898(["tsfp_u5_admissions_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x6bc4301a20d74330(["tsfp_u5_admissions_yearly"]):::completed
+    x2de3516cf4485518(["trocaire_data_file_names"]):::completed --> xab2ef7d5cf8c2a5a["trocaire_data_files"]:::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xbd3f23f4f80bc001(["tsfp_plw_admissions_by_sex_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xa4028d0478a08c4a(["tsfp_plw_admissions_by_sex_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc8e187d255805f46(["tsfp_plw_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x77f2fe6f084dca2c(["tsfp_plw_admissions_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x15baf61e9ffb2262(["tsfp_u5_admissions_by_sex_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b12cae56451f5ec(["tsfp_u5_admissions_by_sex_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b6f17b702e81898(["tsfp_u5_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x6bc4301a20d74330(["tsfp_u5_admissions_yearly"]):::skipped
     
   end
 ```
+
+## License
+
+All code in this workflow is released under a GPL-3.0 license. All text
+and reports in this handbook is released under a CC-BY-4.0 license.
