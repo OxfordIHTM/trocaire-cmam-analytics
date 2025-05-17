@@ -32,7 +32,7 @@ cmam_read_data <- function(file_path) {
       dplyr::across(
         sc_u5_male:sfp_plw_progress, 
         .fns = function(x) as.integer(x) |>
-          (\(x) ifelse(is.na(x), 0, x))()
+          (\(x) ifelse(is.na(x) | x == 0L, NA_integer_, x))()
       ),
       year = .year
     ) |>
@@ -63,7 +63,7 @@ cmam_process_data <- function(cmam_raw_data) {
         factor(levels = month.name),
       service = dplyr::case_when(
         service == "sc" ~ "Stabilisation Centre",
-        service == "otp" ~ "Outpatient Therapeutic Programme",
+        service == "otp" ~ "Outpatient Therapeutic Care Programme",
         service == "sfp" ~ "Targeted Supplementary Feeding Programme",
         .default = service 
       ),

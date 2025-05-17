@@ -7,6 +7,7 @@ options(
   repos = c(
     IHTM = "https://oxfordihtm.r-universe.dev",
     RAPIDSURVEYS = "https://rapidsurveys.r-universe.dev",
+    KATILINGBAN = "https://katilingban.r-universe.dev",
     CRAN = "https://cloud.r-project.org"
   ),
   renv.config.repos.override = getOption("repos"),
