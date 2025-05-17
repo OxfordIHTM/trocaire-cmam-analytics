@@ -21,3 +21,9 @@ library(quarto)
 library(googledrive)
 library(googlesheets4)
 library(Microsoft365R)
+
+
+## Packages for style and theming ----
+
+library(oxthema)
+library(paleta)

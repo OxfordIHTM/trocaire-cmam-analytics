@@ -1,4 +1,4 @@
-# General Targets Workflow -----------------------------------------------------
+# Trocaire CMAM Analytics Workflow ---------------------------------------------
 
 
 ## Load libraries and custom functions ----
@@ -26,7 +26,12 @@ data_targets <- tar_plan(
     name = trocaire_cmam_data_raw,
     command = cmam_read_data(trocaire_data_files),
     pattern = trocaire_data_files
-  ),
+  )
+)
+
+
+## Processing targets
+processing_targets <- tar_plan(
   tar_target(
     name = trocaire_cmam_data,
     command = cmam_process_data(trocaire_cmam_data_raw)
@@ -34,15 +39,56 @@ data_targets <- tar_plan(
 )
 
 
-## Processing targets
-processing_targets <- tar_plan(
-  
-)
-
-
 ## Analysis targets
 analysis_targets <- tar_plan(
-  
+  tar_target(
+    name = sc_admissions_monthly,
+    command = plot_admissions_time(
+      df = trocaire_cmam_data, service = "sc", time_unit = "month"
+    )
+  ),
+  tar_target(
+    name = sc_admissions_yearly,
+    command = plot_admissions_time(
+      df = trocaire_cmam_data, service = "sc", time_unit = "year"
+    )
+  ),
+  tar_target(
+    name = otp_admissions_monthly,
+    command = plot_admissions_time(
+      df = trocaire_cmam_data, service = "otp", time_unit = "month"
+    )
+  ),
+  tar_target(
+    name = otp_admissions_yearly,
+    command = plot_admissions_time(
+      df = trocaire_cmam_data, service = "otp", time_unit = "year"
+    )
+  ),
+  tar_target(
+    name = tsfp_u5_admissions_monthly,
+    command = plot_admissions_time(
+      df = trocaire_cmam_data, service = "tsfp_u5", time_unit = "month"
+    )
+  ),
+  tar_target(
+    name = tsfp_u5_admissions_yearly,
+    command = plot_admissions_time(
+      df = trocaire_cmam_data, service = "tsfp_u5", time_unit = "year"
+    )
+  ),
+  tar_target(
+    name = tsfp_plw_admissions_monthly,
+    command = plot_admissions_time(
+      df = trocaire_cmam_data, service = "tsfp_plw", time_unit = "month"
+    )
+  ),
+  tar_target(
+    name = tsfp_plw_admissions_yearly,
+    command = plot_admissions_time(
+      df = trocaire_cmam_data, service = "tsfp_plw", time_unit = "year"
+    )
+  )
 )
 
 

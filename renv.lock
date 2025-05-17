@@ -3,6 +3,14 @@
     "Version": "4.5.0",
     "Repositories": [
       {
+        "Name": "IHTM",
+        "URL": "https://oxfordihtm.r-universe.dev"
+      },
+      {
+        "Name": "RAPIDSURVEYS",
+        "URL": "https://rapidsurveys.r-universe.dev"
+      },
+      {
         "Name": "CRAN",
         "URL": "https://cloud.r-project.org"
       }
@@ -947,6 +955,38 @@
       "Maintainer": "Richard Iannone <rich@posit.co>",
       "Repository": "RSPM"
     },
+    "forestploter": {
+      "Package": "forestploter",
+      "Version": "1.1.3",
+      "Source": "Repository",
+      "Title": "Create a Flexible Forest Plot",
+      "Authors@R": "person(given=\"Alimu\",  family = \"Dayimu\", email = \"ad938@cam.ac.uk\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0001-9998-7463\"))",
+      "Description": "Create a forest plot based on the layout of the data. Confidence intervals in multiple columns by groups can be done easily. Editing the plot, inserting/adding text, applying a theme to the plot, and much more.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/adayim/forestploter",
+      "BugReports": "https://github.com/adayim/forestploter/issues",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.2",
+      "Imports": [
+        "grid",
+        "gridExtra",
+        "gtable"
+      ],
+      "Suggests": [
+        "gridtext",
+        "rmarkdown",
+        "knitr",
+        "vdiffr",
+        "testthat (>= 3.0.0)",
+        "covr"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "NeedsCompilation": "no",
+      "Author": "Alimu Dayimu [aut, cre] (<https://orcid.org/0000-0001-9998-7463>)",
+      "Maintainer": "Alimu Dayimu <ad938@cam.ac.uk>",
+      "Repository": "https://packagemanager.posit.co/cran/__linux__/jammy/latest"
+    },
     "fs": {
       "Package": "fs",
       "Version": "1.6.6",
@@ -1279,6 +1319,37 @@
       "Author": "Jennifer Bryan [cre, aut] (<https://orcid.org/0000-0002-6983-2759>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Jennifer Bryan <jenny@posit.co>",
       "Repository": "https://packagemanager.posit.co/cran/__linux__/jammy/latest"
+    },
+    "gridExtra": {
+      "Package": "gridExtra",
+      "Version": "2.3",
+      "Source": "Repository",
+      "Authors@R": "c(person(\"Baptiste\", \"Auguie\", email = \"baptiste.auguie@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Anton\", \"Antonov\", email = \"tonytonov@gmail.com\", role = c(\"ctb\")))",
+      "License": "GPL (>= 2)",
+      "Title": "Miscellaneous Functions for \"Grid\" Graphics",
+      "Type": "Package",
+      "Description": "Provides a number of user-level functions to work with \"grid\" graphics, notably to arrange multiple grid-based plots on a page, and draw tables.",
+      "VignetteBuilder": "knitr",
+      "Imports": [
+        "gtable",
+        "grid",
+        "grDevices",
+        "graphics",
+        "utils"
+      ],
+      "Suggests": [
+        "ggplot2",
+        "egg",
+        "lattice",
+        "knitr",
+        "testthat"
+      ],
+      "RoxygenNote": "6.0.1",
+      "NeedsCompilation": "no",
+      "Author": "Baptiste Auguie [aut, cre], Anton Antonov [ctb]",
+      "Maintainer": "Baptiste Auguie <baptiste.auguie@gmail.com>",
+      "Repository": "https://packagemanager.posit.co/cran/__linux__/jammy/latest",
+      "Encoding": "UTF-8"
     },
     "gtable": {
       "Package": "gtable",
@@ -2155,6 +2226,100 @@
       "Author": "Philipp Schauberger [aut], Alexander Walker [aut], Luca Braglia [ctb], Joshua Sturm [ctb], Jan Marvin Garbuszus [ctb, cre], Jordan Mark Barbone [ctb] (<https://orcid.org/0000-0001-9788-3628>), David Zimmermann [ctb], Reinhold Kainhofer [ctb]",
       "Maintainer": "Jan Marvin Garbuszus <jan.garbuszus@ruhr-uni-bochum.de>",
       "Repository": "CRAN"
+    },
+    "oxthema": {
+      "Package": "oxthema",
+      "Version": "0.0.0.9000",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Oxford Colours, Palettes, Fonts, and Themes",
+      "Authors@R": "c( person(given = \"Ernest\", family = \"Guevarra\",  comment = c(ORCID = \"0000-0002-4887-4415\"),  email = \"ernest@guevarra.io\", role = c(\"aut\", \"cre\", \"cph\")), person(given = \"Greco\", family = \"Malijan\", role = \"aut\"))",
+      "Description": "Colours, palettes, fonts, and themes based on University of Oxford's visual identity guidelines <https://communications.web.ox.ac.uk/communications-resources/visual-identity/identity-guidelines>.",
+      "License": "GPL (>= 3)",
+      "Depends": [
+        "R (>= 2.10)"
+      ],
+      "Imports": [
+        "forestploter",
+        "ggplot2",
+        "stringr",
+        "systemfonts",
+        "withr"
+      ],
+      "Suggests": [
+        "covr",
+        "knitr",
+        "ragg",
+        "rmarkdown",
+        "sf",
+        "showtext",
+        "spelling",
+        "sysfonts",
+        "testthat (>= 3.0.0)"
+      ],
+      "Encoding": "UTF-8",
+      "Language": "en-GB",
+      "LazyData": "true",
+      "RoxygenNote": "7.3.1",
+      "Roxygen": "list(markdown = TRUE)",
+      "URL": "https://oxford-ihtm.io/oxthema/,https://github.com/OxfordIHTM/oxthema",
+      "BugReports": "https://github.com/OxfordIHTM/oxthema/issues",
+      "Config/testthat/edition": "3",
+      "VignetteBuilder": "knitr",
+      "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev libicu-dev",
+      "Repository": "https://oxfordihtm.r-universe.dev",
+      "RemoteUrl": "https://github.com/OxfordIHTM/oxthema",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "3c1fb379dde1204f9b0f9ec38b1ebadef428eaf5",
+      "NeedsCompilation": "no",
+      "Author": "Ernest Guevarra [aut, cre, cph] (<https://orcid.org/0000-0002-4887-4415>), Greco Malijan [aut]",
+      "Maintainer": "Ernest Guevarra <ernest@guevarra.io>"
+    },
+    "paleta": {
+      "Package": "paleta",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Collection of Palettes, Themes, and Theme Components",
+      "Authors@R": "person( given = \"Ernest\",  family = \"Guevarra\",  comment = c(ORCID = \"0000-0002-4887-4415\"),  email = \"ernest@guevarra.io\",  role = c(\"aut\", \"cre\", \"cph\") )",
+      "Description": "A collection of palettes, themes, and theme components based on publicly available branding guidelines of various non-governmental organisations, government agencies, and United Nations units.",
+      "License": "GPL (>= 3)",
+      "Depends": [
+        "R (>= 4.1.0)"
+      ],
+      "Imports": [
+        "cli",
+        "ggplot2",
+        "stringr",
+        "systemfonts",
+        "withr"
+      ],
+      "Suggests": [
+        "knitr",
+        "ragg",
+        "rmarkdown",
+        "showtext",
+        "spelling",
+        "sysfonts",
+        "testthat (>= 3.0.0)"
+      ],
+      "Encoding": "UTF-8",
+      "Language": "en-GB",
+      "LazyData": "true",
+      "RoxygenNote": "7.3.2",
+      "Roxygen": "list(markdown = TRUE)",
+      "URL": "https://katilingban.io/paleta,https://github.com/katilingban/paleta",
+      "BugReports": "https://github.com/katilingban/paleta/issues",
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev libicu-dev",
+      "Repository": "https://katilingban.r-universe.dev",
+      "RemoteUrl": "https://github.com/katilingban/paleta",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "de27820de7f4a8cba826023eb862c3e3253eaecd",
+      "NeedsCompilation": "no",
+      "Author": "Ernest Guevarra [aut, cre, cph] (ORCID: <https://orcid.org/0000-0002-4887-4415>)",
+      "Maintainer": "Ernest Guevarra <ernest@guevarra.io>"
     },
     "pillar": {
       "Package": "pillar",
