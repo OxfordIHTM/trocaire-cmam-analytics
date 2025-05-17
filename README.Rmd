@@ -24,7 +24,9 @@ This repository is a template for a [`docker`](https://www.docker.com/get-starte
 
 ## About the Project
 
+Malnutrition in Somalia is among the highest globally, with around 903,000 children affected, including 150,000 who are severely malnourished. Trócaire addresses this by screening and treating children under five, providing nutrition supplements, and promoting better feeding and hygiene practices among pregnant and nursing mothers. They also train caregivers to identify and refer malnourished children for timely treatment.
 
+This repository contains workflows that process and analyse Trócaire's community-based management of acute malnutrition (CMAM) routine programme data.
 
 ## Repository Structure
 
