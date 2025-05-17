@@ -43,49 +43,97 @@ processing_targets <- tar_plan(
 analysis_targets <- tar_plan(
   tar_target(
     name = sc_admissions_monthly,
-    command = plot_admissions_time(
+    command = plot_admissions(
       df = trocaire_cmam_data, service = "sc", time_unit = "month"
     )
   ),
   tar_target(
     name = sc_admissions_yearly,
-    command = plot_admissions_time(
+    command = plot_admissions(
       df = trocaire_cmam_data, service = "sc", time_unit = "year"
     )
   ),
   tar_target(
     name = otp_admissions_monthly,
-    command = plot_admissions_time(
+    command = plot_admissions(
       df = trocaire_cmam_data, service = "otp", time_unit = "month"
     )
   ),
   tar_target(
     name = otp_admissions_yearly,
-    command = plot_admissions_time(
+    command = plot_admissions(
       df = trocaire_cmam_data, service = "otp", time_unit = "year"
     )
   ),
   tar_target(
     name = tsfp_u5_admissions_monthly,
-    command = plot_admissions_time(
+    command = plot_admissions(
       df = trocaire_cmam_data, service = "tsfp_u5", time_unit = "month"
     )
   ),
   tar_target(
     name = tsfp_u5_admissions_yearly,
-    command = plot_admissions_time(
+    command = plot_admissions(
       df = trocaire_cmam_data, service = "tsfp_u5", time_unit = "year"
     )
   ),
   tar_target(
     name = tsfp_plw_admissions_monthly,
-    command = plot_admissions_time(
+    command = plot_admissions(
       df = trocaire_cmam_data, service = "tsfp_plw", time_unit = "month"
     )
   ),
   tar_target(
     name = tsfp_plw_admissions_yearly,
-    command = plot_admissions_time(
+    command = plot_admissions(
+      df = trocaire_cmam_data, service = "tsfp_plw", time_unit = "year"
+    )
+  ),
+  tar_target(
+    name = sc_admissions_by_sex_monthly,
+    command = plot_admissions_sex(
+      df = trocaire_cmam_data, service = "sc", time_unit = "month"
+    )
+  ),
+  tar_target(
+    name = sc_admissions_by_sex_yearly,
+    command = plot_admissions_sex(
+      df = trocaire_cmam_data, service = "sc", time_unit = "year"
+    )
+  ),
+  tar_target(
+    name = otp_admissions_by_sex_monthly,
+    command = plot_admissions_sex(
+      df = trocaire_cmam_data, service = "otp", time_unit = "month"
+    )
+  ),
+  tar_target(
+    name = otp_admissions_by_sex_yearly,
+    command = plot_admissions_sex(
+      df = trocaire_cmam_data, service = "otp", time_unit = "year"
+    )
+  ),
+  tar_target(
+    name = tsfp_u5_admissions_by_sex_monthly,
+    command = plot_admissions_sex(
+      df = trocaire_cmam_data, service = "tsfp_u5", time_unit = "month"
+    )
+  ),
+  tar_target(
+    name = tsfp_u5_admissions_by_sex_yearly,
+    command = plot_admissions_sex(
+      df = trocaire_cmam_data, service = "tsfp_u5", time_unit = "year"
+    )
+  ),
+  tar_target(
+    name = tsfp_plw_admissions_by_sex_monthly,
+    command = plot_admissions_sex(
+      df = trocaire_cmam_data, service = "tsfp_plw", time_unit = "month"
+    )
+  ),
+  tar_target(
+    name = tsfp_plw_admissions_by_sex_yearly,
+    command = plot_admissions_sex(
       df = trocaire_cmam_data, service = "tsfp_plw", time_unit = "year"
     )
   )
