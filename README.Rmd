@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![License for code](https://img.shields.io/badge/license (for code)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
+[![License for text](https://img.shields.io/badge/license (for writing)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
 [![test targets workflow](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml)
 <!-- badges: end -->
 
@@ -67,9 +68,25 @@ trocaire-cmam-analytics
 
 ## Reproducibility
 
+### R version
+
+This project was built using `R 4.5.0`. To manage R versions, it is recommended to use the [`rig` software](https://github.com/r-lib/rig) to be able to install multiple versions of R and switch between them as needed.
+
 ### R package dependencies
 
-This project was built using `R 4.5.0`. This project uses the `renv` framework to record R package dependencies and versions. Packages and versions used are recorded in `renv.lock` and code used to manage dependencies is in `renv/` and other files in the root project directory. On starting an R session in the working directory, run `renv::restore()` to install R package dependencies.
+This project uses the `{renv}` framework to record R package dependencies and versions. Packages and versions used are recorded in `renv.lock` and code used to manage dependencies is in the `renv` directory and other files in the root project directory.
+
+On starting an R session in the working directory of this repository, first run 
+
+```R
+renv::restore()
+``` 
+
+to install R package dependencies.
+
+### Encryption
+
+This project uses encrypted environment variables and authentication keys for data retrieval managed using [`git-crypt`](https://github.com/AGWA/git-crypt). Collaborators will need to provide their GPG key to the authors to be added as an authorised user. To get a GPG key, [download and install GPG](https://www.gnupg.org/download/) and then [generate your GPG key pair](https://www.gnupg.org/gph/en/manual/c14.html). Then provide your GPG key id to the authors.
 
 ### The workflow
 
@@ -85,3 +102,7 @@ cat(
   sep = "\n"
 )
 ```
+
+## License
+
+All code in this workflow is released under a GPL-3.0 license. All text and reports in this handbook is released under a CC-BY-4.0 license.
