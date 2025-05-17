@@ -85,3 +85,26 @@ versions used are recorded in `renv.lock` and code used to manage
 dependencies is in `renv/` and other files in the root project
 directory. On starting an R session in the working directory, run
 `renv::restore()` to install R package dependencies.
+
+### The workflow
+
+``` mermaid
+graph LR
+  style Graph fill:#FFFFFF00,stroke:#000000;
+  subgraph Graph
+    direction LR
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x211a3b39dfafa3b3(["otp_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7278532b2bc29c60(["otp_admissions_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x51516c5a51bc6f72(["sc_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xd02d1bbb0c19e187(["sc_admissions_yearly"]):::skipped
+    xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped --> x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped
+    xab2ef7d5cf8c2a5a["trocaire_data_files"]:::skipped --> xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped
+    x768c673cc9e63582(["trocaire_data_files_list"]):::completed --> x2de3516cf4485518(["trocaire_data_file_names"]):::completed
+    x2de3516cf4485518(["trocaire_data_file_names"]):::completed --> xab2ef7d5cf8c2a5a["trocaire_data_files"]:::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc8e187d255805f46(["tsfp_plw_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x77f2fe6f084dca2c(["tsfp_plw_admissions_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b6f17b702e81898(["tsfp_u5_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x6bc4301a20d74330(["tsfp_u5_admissions_yearly"]):::skipped
+    
+  end
+```
