@@ -19,8 +19,7 @@ knitr::opts_chunk$set(
 [![test targets workflow](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml)
 <!-- badges: end -->
 
-This repository is a template for a [`docker`](https://www.docker.com/get-started)-containerised, [`{targets}`](https://docs.ropensci.org/targets/)-based, [`{renv}`](https://rstudio.github.io/renv/articles/renv.html)-enabled [`R`](https://cran.r-project.org/) workflow for analytics of [Trocaire](https://www.trocaire.org/)'s Community-based Management of Acute Malnutrition (CMAM) programme in Somalia.
-This repository is a template for a [`docker`](https://www.docker.com/get-started)-containerised, [`{targets}`](https://docs.ropensci.org/targets/)-based, [`{renv}`](https://rstudio.github.io/renv/articles/renv.html)-enabled [`R`](https://cran.r-project.org/) workflow for analytics of [Trocaire](https://www.trocaire.org/)'s Community-based Management of Acute Malnutrition (CMAM) programme in Somalia.
+This repository is a template for a [`docker`](https://www.docker.com/get-started)-containerised, [`{targets}`](https://docs.ropensci.org/targets/)-based, [`{renv}`](https://rstudio.github.io/renv/articles/renv.html)-enabled [`R`](https://cran.r-project.org/) workflow for analytics of [Trócaire](https://www.trocaire.org/)'s Community-based Management of Acute Malnutrition (CMAM) programme in Somalia.
 
 ## About the Project
 
@@ -34,7 +33,9 @@ The project repository is structured as follows:
 
 ```
 trocaire-cmam-analytics
+    |-- .git-crypt/
     |-- .github/
+    |-- auth/
     |-- data/
     |-- data-raw/
     |-- outputs/
@@ -43,11 +44,17 @@ trocaire-cmam-analytics
     |-- renv
     |-- renv.lock
     |-- .Rprofile
+    |-- .env
+    |-- .gitattributes
     |-- packages.R
     |-- _targets.R
 ```
 
+* `.git-crypt/` contains `.git-crypt` software specific files to manage encryption of specific files and folders in the repository.  
+
 * `.github` contains project testing and automated deployment of outputs workflows via continuous integration and continuous deployment (CI/CD) using Github Actions.
+
+* `auth` contains encrypted authentication keys used in this project.
 
 * `data/` contains intermediate and final data outputs produced by the workflow.
 
@@ -65,6 +72,10 @@ trocaire-cmam-analytics
 
 * `.Rprofile` file is a project R profile generated when initiating `renv` for the first time. This file is run automatically every time R is run within this project, and `renv` uses it to configure the R session to use the `renv` project library.
 
+* `.env` is an encrypted file that contains environment variables used in this project.
+
+* `.gitattributes` file contains information used by `git-crypt` to determine which files and/or folders in the repository to encrypt.
+
 * `packages.R` file lists out all R package dependencies required by the workflow.
 
 * `_targets.R` file defines the steps in the workflow's data ingest, data processing, data analysis, and reporting pipeline.
@@ -73,7 +84,7 @@ trocaire-cmam-analytics
 
 ### R version
 
-This project was built using `R 4.5.0`. To manage R versions, it is recommended to use the [`rig` software](https://github.com/r-lib/rig) to be able to install multiple versions of R and switch between them as needed.
+This project was built using `R 4.5.0`. To manage R versions, it is recommended to use [`rig`](https://github.com/r-lib/rig) - an R installation manager - to be able to install multiple versions of R and switch between them as needed.
 
 ### R package dependencies
 
@@ -83,13 +94,13 @@ On starting an R session in the working directory of this repository, first run
 
 ```R
 renv::restore()
-``` 
+```
 
 to install R package dependencies.
 
 ### Encryption
 
-This project uses encrypted environment variables and authentication keys for data retrieval managed using [`git-crypt`](https://github.com/AGWA/git-crypt). Collaborators will need to provide their GPG key to the authors to be added as an authorised user. To get a GPG key, [download and install GPG](https://www.gnupg.org/download/) and then [generate your GPG key pair](https://www.gnupg.org/gph/en/manual/c14.html). Then provide your GPG key id to the authors.
+This project uses encrypted environment variables and authentication keys for data retrieval managed using [`git-crypt`](https://github.com/AGWA/git-crypt). Collaborators will need to install `git-crypt` and then provide their GPG key to the authors to be added as an authorised user within the repository. To get a GPG key, [download and install GPG](https://www.gnupg.org/download/) and then [generate your GPG key pair](https://www.gnupg.org/gph/en/manual/c14.html). Then provide your GPG key id to the authors.
 
 ### The workflow
 
