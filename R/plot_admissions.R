@@ -29,6 +29,10 @@ plot_admissions <- function(df,
         )
       ) +
       ggplot2::geom_line(linewidth = 1) +
+      ggplot2::scale_colour_manual(
+        name = NULL, 
+        values = oxthema::get_oxford_colours("plum|sage|orange|royal")
+      ) +
       ggplot2::labs(
         title = title_text,
         subtitle = paste0(min(df$year), " to ", max(df$year)),

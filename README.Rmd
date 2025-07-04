@@ -50,7 +50,7 @@ trocaire-cmam-analytics
     |-- _targets.R
 ```
 
-* `.git-crypt/` contains `.git-crypt` software specific files to manage encryption of specific files and folders in the repository.  
+* `.git-crypt/` contains `git-crypt` software specific files to manage encryption of specific files and folders in the repository.  
 
 * `.github` contains project testing and automated deployment of outputs workflows via continuous integration and continuous deployment (CI/CD) using Github Actions.
 
@@ -84,7 +84,7 @@ trocaire-cmam-analytics
 
 ### R version
 
-This project was built using `R 4.5.0`. To manage R versions, it is recommended to use [`rig`](https://github.com/r-lib/rig) - an R installation manager - to be able to install multiple versions of R and switch between them as needed.
+This project was built using `R 4.5.01. To manage R versions, it is recommended to use [`rig`](https://github.com/r-lib/rig) - an R installation manager - to be able to install multiple versions of R and switch between them as needed.
 
 ### R package dependencies
 

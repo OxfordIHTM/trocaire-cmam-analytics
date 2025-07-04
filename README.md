@@ -56,8 +56,8 @@ The project repository is structured as follows:
         |-- packages.R
         |-- _targets.R
 
-  - `.git-crypt/` contains `.git-crypt` software specific files to
-    manage encryption of specific files and folders in the repository.
+  - `.git-crypt/` contains `git-crypt` software specific files to manage
+    encryption of specific files and folders in the repository.
 
   - `.github` contains project testing and automated deployment of
     outputs workflows via continuous integration and continuous
@@ -113,8 +113,8 @@ The project repository is structured as follows:
 
 ### R version
 
-This project was built using `R 4.5.0`. To manage R versions, it is
-recommended to use [`rig`](https://github.com/r-lib/rig) - an R
+This project was built using `R 4.5.01. To manage R versions, it is
+recommended to use [`rig\`\](<https://github.com/r-lib/rig>) - an R
 installation manager - to be able to install multiple versions of R and
 switch between them as needed.
 
@@ -153,26 +153,26 @@ graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
   subgraph Graph
     direction LR
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe1cb52acd9cb733d(["otp_admissions_by_sex_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc5234a98b2b6e9c0(["otp_admissions_by_sex_yearly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x211a3b39dfafa3b3(["otp_admissions_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7278532b2bc29c60(["otp_admissions_yearly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x11cedfe9795e0456(["sc_admissions_by_sex_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe8b2466bc3ec193d(["sc_admissions_by_sex_yearly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x51516c5a51bc6f72(["sc_admissions_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xd02d1bbb0c19e187(["sc_admissions_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe1cb52acd9cb733d(["otp_admissions_by_sex_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc5234a98b2b6e9c0(["otp_admissions_by_sex_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x211a3b39dfafa3b3(["otp_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7278532b2bc29c60(["otp_admissions_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x11cedfe9795e0456(["sc_admissions_by_sex_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe8b2466bc3ec193d(["sc_admissions_by_sex_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x51516c5a51bc6f72(["sc_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xd02d1bbb0c19e187(["sc_admissions_yearly"]):::skipped
     xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped --> x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped
     xab2ef7d5cf8c2a5a["trocaire_data_files"]:::skipped --> xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped
     x768c673cc9e63582(["trocaire_data_files_list"]):::completed --> x2de3516cf4485518(["trocaire_data_file_names"]):::completed
     x2de3516cf4485518(["trocaire_data_file_names"]):::completed --> xab2ef7d5cf8c2a5a["trocaire_data_files"]:::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xbd3f23f4f80bc001(["tsfp_plw_admissions_by_sex_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xa4028d0478a08c4a(["tsfp_plw_admissions_by_sex_yearly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc8e187d255805f46(["tsfp_plw_admissions_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x77f2fe6f084dca2c(["tsfp_plw_admissions_yearly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x15baf61e9ffb2262(["tsfp_u5_admissions_by_sex_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b12cae56451f5ec(["tsfp_u5_admissions_by_sex_yearly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b6f17b702e81898(["tsfp_u5_admissions_monthly"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x6bc4301a20d74330(["tsfp_u5_admissions_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xbd3f23f4f80bc001(["tsfp_plw_admissions_by_sex_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xa4028d0478a08c4a(["tsfp_plw_admissions_by_sex_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc8e187d255805f46(["tsfp_plw_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x77f2fe6f084dca2c(["tsfp_plw_admissions_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x15baf61e9ffb2262(["tsfp_u5_admissions_by_sex_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b12cae56451f5ec(["tsfp_u5_admissions_by_sex_yearly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b6f17b702e81898(["tsfp_u5_admissions_monthly"]):::skipped
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x6bc4301a20d74330(["tsfp_u5_admissions_yearly"]):::skipped
     
   end
 ```
