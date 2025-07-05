@@ -45,13 +45,15 @@ plot_admissions <- function(df,
       ggplot2::theme(legend.position = "top")
   } else {
     df |>
-      dplyr::summarise(total = sum(total), .by = c(year, district)) |>
+      dplyr::summarise(
+        total = sum(total, na.rm = TRUE), .by = c(year, district)
+      ) |>
       ggplot2::ggplot(
         mapping = ggplot2::aes(
           x = year, y = total, group = district, colour = district
         )
       ) +
-      ggplot2::geom_line() +
+      ggplot2::geom_line(linewidth = 1.5) +
       ggplot2::labs(
         title = title_text,
         subtitle = paste0(min(df$year), " to ", max(df$year)),

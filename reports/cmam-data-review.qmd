@@ -1,0 +1,438 @@
+---
+title: Data Review
+subtitle: Trócaire Somalia Community-based Management of Acute Malnutrition
+author:
+  - name: Ernest Guevarra
+    orcid: 0000-0002-4887-4415
+    email: ernest.guevarra@ndm.ox.ac.uk
+    affiliation: 
+      - name: Centre for Tropical Medicine and Global Health, Nuffield Department of Medicine, University of Oxford
+        city: Oxford
+date: last-modified
+date-format: "DD MMMM YYYY"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    embed-resources: true
+    grid:
+      body-width: 900px
+      margin-width: 300px
+    code-tools:
+      source: https://github.com/OxfordIHTM/trocaire-cmam-analytics/blob/main/reports/cmam-data-review.qmd
+    highlight-style: breeze
+engine: knitr
+---
+
+```{r}
+#| label: setup
+#| echo: false
+#| include: false
+
+suppressPackageStartupMessages(source("packages.R"))
+for (f in list.files(here::here("R"), full.names = TRUE)) source (f)
+
+tar_load(
+  c(
+    trocaire_cmam_data_raw, trocaire_cmam_data, 
+    dplyr::starts_with("otp"),
+    dplyr::starts_with("tsfp"), 
+    dplyr::starts_with("sc")
+  )
+)
+```
+
+This report documents the data review conducted on Trócaire Somalia's community-based management of acute malnutrition (CMAM) data as per informal collaboration between Trócaire Somalia and University of Oxford's MSc in International Health and Tropical Medicine.
+
+## The datasets {#sec-datasets}
+
+Trócaire Somalia's Head of Programmes provided the IHTM team with 4 Microsoft Excel files, one file for each year from 2021 to 2024. These files were supposed to contain Trócaire Somalia's CMAM programme data for those specified years. The IHTM team stored these files securely in University of Oxford Microsoft OneDrive accounts. The data review was performed using R language for statistical computing.
+
+## Data structure {#sec-data-structure}
+
+The data from each of the files provided by Trócaire Somalia were read into R and then concatenated into a single table containing the data from all the 4 years. Only data from the first worksheet of every file were read into R. To make handling of the raw data much easier in R, fields/variables were renamed using more syntax-friendly formats. The full concatenated data is presented below (showing first 10 rows):
+
+```{r}
+#| label: full-data-raw-table
+#| html-table-processing: none
+#| echo: false
+
+head(trocaire_cmam_data_raw, 10) |>
+  kable() |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+
+There are **`r nrow(trocaire_cmam_data_raw)`** rows and **`r ncol(trocaire_cmam_data_raw)`** columns in the raw concatenated dataset. The names of the fields/variables in the dataset are as follows:
+
+```{r}
+#| label: var-names-list
+#| html-table-processing: none
+#| echo: false
+
+names(trocaire_cmam_data_raw) |>
+  data.frame() |>
+  kable(col.names = "Variable") |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+
+The datasets provided are numbers of admissions per month per district in Gedo region of Somalia where Trócaire Somalia operates. Most of the variables are self-explanatory. However, it unclear based on the data alone whether the numbers of admissions are for new admissions. Also, it is unclear what the term **progress** means in relation to admissions. Looking at the pattern of the values for each variable, there is no obvious pattern to the numbers in relation to each other that can give clues to what the variable on **progress* pertain to.
+
+::: {.callout-important}
+
+Always helpful to have accompanying notes or guidance or even better a proper data dictionary when a dataset/datasets are shared. This data dictionary should ideally explain what each field/variable of the dataset is about.
+
+:::
+
+The concatenated dataset is structured in such a way that the field/variable names are not column names but rather values. For instance, the variable `sc_u5_male` indicate values for the type of programme (`sc`), the population grouping (`u5`), and the sex grouping (`male`) to which that column of values pertain to. This characteristic structure is one of the five most common problems of what is termed as *messy data*[^messydata]. This is a structure most persons use/rely on specifically when they use Microsoft Excel for data entry/data recording and for data analysis and reporting.
+
+Microsoft Excel along with other spreadsheet software are often used as a multi-purpose tool for data entry, storage, analysis, and visualisation. By design, these tools make humans format data to be viewed by the human eye rather than to be readable by a machine. The current structure of the Trócaire Somalia CMAM datasets are human-readable but not machine-readable.
+
+Other than this issue on data structure, no major issues were noted with the concatenated dataset.
+
+Based on the three principles of *tidy data*, the concatenated dataset was re-structured into the following (showing first 10 rows):
+
+```{r}
+#| label: full-data-raw-table-restructure
+#| html-table-processing: none
+#| echo: false
+
+head(trocaire_cmam_data, 10) |>
+  kable() |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+
+The re-structured concatenated dataset now has **`r nrow(trocaire_cmam_data)`** rows and **`r ncol(trocaire_cmam_data)`** columns. Compared to the earlier messy data structure, the tidy data structure is longer (more rows) but less wide (less columns).
+
+The field/variable names of the re-structured concatenated dataset are:
+
+```{r}
+#| label: var-names-list-tidy
+#| html-table-processing: none
+#| echo: false
+
+names(trocaire_cmam_data) |>
+  data.frame() |>
+  kable(col.names = "Variable") |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+
+## Variables {#sec-variables}
+
+In this section, we review each of the fields/variables of the re-structured concatenated dataset.
+
+### year
+
+```{r}
+#| label: year-tab
+#| html-table-processing: none
+#| echo: false
+
+trocaire_cmam_data |>
+  count(year) |>
+  kable() |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+
+We see equal number of records per year over the years 2021, 2022, 2023, and 2024 which is what we expect.
+
+### month
+
+```{r}
+#| label: month-tab
+#| html-table-processing: none
+#| echo: false
+
+trocaire_cmam_data |>
+  count(month) |>
+  kable() |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+We see equal number of records per month over 12 months which is what we expect. Note also that we have recoded this variable such that the full month name is used (rather than the 3 letter abbreviation).
+
+### district
+
+```{r}
+#| label: district-tab
+#| html-table-processing: none
+#| echo: false
+
+trocaire_cmam_data |>
+  count(district) |>
+  kable() |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+
+There are 4 districts in the dataset each of whom have the same number of records (as expected). All four districts are from the Gedo region of Somalia.
+
+### service
+
+```{r}
+#| label: service-tab
+#| html-table-processing: none
+#| echo: false
+
+trocaire_cmam_data |>
+  count(service) |>
+  kable() |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+
+There are 3 services indicated in the dataset - *outpatient therapeutic care programme or OTP*, *targeted supplementary feeding programme or TSFP*, and *stabilisation centre or SC*. The TSFP service has more records (double) than the other two because the TSFP has two different beneficiary types (see next section). These are expected number of records.
+
+### type
+
+```{r}
+#| label: type-tab
+#| html-table-processing: none
+#| echo: false
+
+trocaire_cmam_data |>
+  count(type) |>
+  kable() |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+```
+
+There are 2 beneficiary types indicated in the dataset - *children under-five years* and *pregnant or lactating women*. The children under 5 years category has tree times the number of records as the pregnant or lactating women category. This is because there are 3 services for these beneficiary type while only one service cater for the pregnant or lactating women. These are expected number of records.
+
+### service and type
+
+```{r}
+#| label: service-type-tab
+#| html-table-processing: none
+#| echo: false
+
+trocaire_cmam_data |>
+  count(service, type) |>
+  kable() |>
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    full_width = FALSE
+  )
+
+```
+
+When service and beneficiary type are cross-tabulated, we get the same number of records per combined category grouping. Again, this is the expected number of records.
+
+
+## Data exploration
+
+### Outpatient therapeutic care programme
+
+```{r}
+#| label: monthly-admissions-otp
+#| fig-width: 12
+#| fig-height: 10
+#| message: false
+#| warning: false
+#| echo: false
+
+otp_admissions_monthly
+```
+
+```{r}
+#| label: yearly-admissions-otp
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| message: false
+#| warning: false
+#| echo: false
+
+otp_admissions_yearly
+```
+
+```{r}
+#| label: monthly-admissions-sex-otp
+#| fig-width: 12
+#| fig-height: 10
+#| message: false
+#| warning: false
+#| echo: false
+
+otp_admissions_by_sex_monthly
+```
+
+```{r}
+#| label: yearly-admissions-sex-otp
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| message: false
+#| warning: false
+#| echo: false
+
+otp_admissions_by_sex_yearly
+```
+
+### Targeted supplementary feeding programme - children under 5
+
+```{r}
+#| label: monthly-admissions-tsfp-u5
+#| fig-width: 12
+#| fig-height: 10
+#| message: false
+#| warning: false
+#| echo: false
+
+tsfp_u5_admissions_monthly
+```
+
+```{r}
+#| label: yearly-admissions-tsfp-u5
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| message: false
+#| warning: false
+#| echo: false
+
+tsfp_u5_admissions_yearly
+```
+
+```{r}
+#| label: monthly-admissions-sex-tsfp-u5
+#| fig-width: 12
+#| fig-height: 10
+#| message: false
+#| warning: false
+#| echo: false
+
+tsfp_u5_admissions_by_sex_monthly
+```
+
+```{r}
+#| label: yearly-admissions-sex-tsfp-u5
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| message: false
+#| warning: false
+#| echo: false
+
+tsfp_u5_admissions_by_sex_yearly
+```
+
+### Targeted supplementary feeding programme - pregnant or lactating women
+
+```{r}
+#| label: monthly-admissions-plw
+#| fig-width: 12
+#| fig-height: 10
+#| message: false
+#| warning: false
+#| echo: false
+
+tsfp_plw_admissions_monthly
+```
+
+```{r}
+#| label: yearly-admissions-plw
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| message: false
+#| warning: false
+#| echo: false
+
+tsfp_plw_admissions_yearly
+```
+
+```{r}
+#| label: monthly-admissions-sex-plw
+#| fig-width: 12
+#| fig-height: 10
+#| message: false
+#| warning: false
+#| echo: false
+
+tsfp_plw_admissions_by_sex_monthly
+```
+
+```{r}
+#| label: yearly-admissions-sex-plw
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| message: false
+#| warning: false
+#| echo: false
+
+tsfp_plw_admissions_by_sex_yearly
+```
+
+### Stabilisation cetnre
+
+```{r}
+#| label: monthly-admissions-sc
+#| fig-width: 12
+#| fig-height: 10
+#| message: false
+#| warning: false
+#| echo: false
+
+sc_admissions_monthly
+```
+
+```{r}
+#| label: yearly-admissions-sc
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| message: false
+#| warning: false
+#| echo: false
+
+sc_admissions_yearly
+```
+
+```{r}
+#| label: monthly-admissions-sex-sc
+#| fig-width: 12
+#| fig-height: 10
+#| message: false
+#| warning: false
+#| echo: false
+
+sc_admissions_by_sex_monthly
+```
+
+```{r}
+#| label: yearly-admissions-sex-sc
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| message: false
+#| warning: false
+#| echo: false
+
+sc_admissions_by_sex_yearly
+```
+
+[^messydata]: As opposed to *tidy data* - a dataset in which 1. each variable forms a column; 2. each observation forms a row; and, 3. each type of observational unit forms a table.

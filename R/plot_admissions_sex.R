@@ -51,7 +51,7 @@ plot_admissions_sex <- function(df,
         grid = "XY", grid_col = oxthema::get_oxford_colour("stone")
       ) +
       ggplot2::theme(
-        legend.position = "top", 
+        legend.position = ifelse(service == "tsfp_plw", "none", "top"), 
         axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
       )
   } else {
@@ -74,6 +74,8 @@ plot_admissions_sex <- function(df,
       oxthema::theme_oxford(
         grid = "XY", grid_col = oxthema::get_oxford_colour("stone")
       ) +
-      ggplot2::theme(legend.position = "top")
+      ggplot2::theme(
+        legend.position = ifelse(service == "tsfp_plw", "none", "top")
+      )
   }
 }
