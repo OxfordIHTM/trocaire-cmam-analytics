@@ -12,6 +12,11 @@ plot_admissions_sex <- function(df,
   title_text <- create_title_text(
     service = service, time_unit = time_unit, by_sex = TRUE
   )
+  subtitle_text <- paste(
+    create_subtitle_text(service = service),
+    paste0(min(df$year), " to ", max(df$year)),
+    sep = " - "
+  )
 
   df <- df |>
     dplyr::filter(eval(parse(text = serv_expr))) |>
@@ -40,8 +45,7 @@ plot_admissions_sex <- function(df,
         )
       ) +
       ggplot2::labs(
-        title = title_text,
-        subtitle = paste0(min(df$year), " to ", max(df$year)),
+        title = title_text, subtitle = subtitle_text,
         x = "Month", y = "Admissions"
       ) +
       ggplot2::facet_grid(
@@ -67,8 +71,7 @@ plot_admissions_sex <- function(df,
         )
       ) +
       ggplot2::labs(
-        title = title_text,
-        subtitle = paste0(min(df$year), " to ", max(df$year)),
+        title = title_text, subtitle = subtitle_text,
         x = "Year", y = "Admissions"
       ) +
       oxthema::theme_oxford(
