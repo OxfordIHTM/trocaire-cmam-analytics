@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![License for code](https://img.shields.io/badge/license (for code)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
 [![License for text](https://img.shields.io/badge/license (for writing)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
+![License for CMAM data](https://img.shields.io/badge/license (for CMAM data)-restricted-red)
+[![License for other data](https://img.shields.io/badge/license (for other data)-CC0-blue)](https://creativecommons.org/public-domain/cc0/)
 [![test targets workflow](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml)
 <!-- badges: end -->
 
@@ -125,5 +127,5 @@ cat(
 
 ## License
 
-All code in this workflow is released under a GPL-3.0 license. All text and reports in this handbook is released under a CC-BY-4.0 license.
+All code in this workflow is released under a [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html#license-text) license. All text and reports in this workflow is released under a [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/deed.en) license. Data from Trócaire's CMAM programme is owned by Trócaire and is restricted to those who have been given permission. All other data is released under a [CC0](https://creativecommons.org/public-domain/cc0/) license.
 
