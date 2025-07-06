@@ -60,7 +60,7 @@ plot_admissions_sex <- function(df,
       )
   } else {
     df |>
-      dplyr::summarise(n = sum(n), .by = c(year, district, sex)) |>
+      dplyr::summarise(n = sum(n, na.rm = TRUE), .by = c(year, district, sex)) |>
       ggplot2::ggplot(mapping = ggplot2::aes(x = year, y = n, fill = sex)) +
       ggplot2::geom_bar(stat = "identity", colour = NA) +
       ggplot2::scale_fill_manual(
