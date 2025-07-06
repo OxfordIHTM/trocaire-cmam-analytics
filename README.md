@@ -10,7 +10,7 @@ code](https://img.shields.io/badge/license%20\(for%20code\)-GPL3.0-blue.svg)](ht
 [![License for
 text](https://img.shields.io/badge/license%20\(for%20writing\)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
 ![License for CMAM
-data](https://img.shields.io/badge/license%20\(for%20CMAM%20data\)-restricted-red)
+data](https://img.shields.io/badge/license%20\(for%20CMAM%20data\)-restricted-yellow)
 [![License for other
 data](https://img.shields.io/badge/license%20\(for%20other%20data\)-CC0-blue)](https://creativecommons.org/public-domain/cc0/)
 [![test targets
