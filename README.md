@@ -15,6 +15,7 @@ data](https://img.shields.io/badge/license%20\(for%20CMAM%20data\)-restricted-re
 data](https://img.shields.io/badge/license%20\(for%20other%20data\)-CC0-blue)](https://creativecommons.org/public-domain/cc0/)
 [![test targets
 workflow](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml)
+[![DOI](https://zenodo.org/badge/983366836.svg)](https://doi.org/10.5281/zenodo.15821555)
 <!-- badges: end -->
 
 This repository is a template for a
@@ -157,28 +158,44 @@ graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
   subgraph Graph
     direction LR
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xf69487b7eb1bdf74(["data_review_report"]):::completed
-    xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped --> xf69487b7eb1bdf74(["data_review_report"]):::completed
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe1cb52acd9cb733d(["otp_admissions_by_sex_monthly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc5234a98b2b6e9c0(["otp_admissions_by_sex_yearly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x211a3b39dfafa3b3(["otp_admissions_monthly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7278532b2bc29c60(["otp_admissions_yearly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x11cedfe9795e0456(["sc_admissions_by_sex_monthly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe8b2466bc3ec193d(["sc_admissions_by_sex_yearly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x51516c5a51bc6f72(["sc_admissions_monthly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xd02d1bbb0c19e187(["sc_admissions_yearly"]):::skipped
-    xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped --> x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped
-    xab2ef7d5cf8c2a5a["trocaire_data_files"]:::skipped --> xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped
+    xe1cb52acd9cb733d(["otp_admissions_by_sex_monthly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    xc5234a98b2b6e9c0(["otp_admissions_by_sex_yearly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x211a3b39dfafa3b3(["otp_admissions_monthly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x7278532b2bc29c60(["otp_admissions_yearly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x11cedfe9795e0456(["sc_admissions_by_sex_monthly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    xe8b2466bc3ec193d(["sc_admissions_by_sex_yearly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x51516c5a51bc6f72(["sc_admissions_monthly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    xd02d1bbb0c19e187(["sc_admissions_yearly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x15baf61e9ffb2262(["tsfp_u5_admissions_by_sex_monthly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x7b12cae56451f5ec(["tsfp_u5_admissions_by_sex_yearly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x7b6f17b702e81898(["tsfp_u5_admissions_monthly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x6bc4301a20d74330(["tsfp_u5_admissions_yearly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    xefcb70fd373e934d["trocaire_cmam_data_raw"]:::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    xbd3f23f4f80bc001(["tsfp_plw_admissions_by_sex_monthly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    xa4028d0478a08c4a(["tsfp_plw_admissions_by_sex_yearly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x77f2fe6f084dca2c(["tsfp_plw_admissions_yearly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    xc8e187d255805f46(["tsfp_plw_admissions_monthly"]):::completed --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xe1cb52acd9cb733d(["otp_admissions_by_sex_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xc5234a98b2b6e9c0(["otp_admissions_by_sex_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x211a3b39dfafa3b3(["otp_admissions_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x7278532b2bc29c60(["otp_admissions_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x11cedfe9795e0456(["sc_admissions_by_sex_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xe8b2466bc3ec193d(["sc_admissions_by_sex_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x51516c5a51bc6f72(["sc_admissions_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xd02d1bbb0c19e187(["sc_admissions_yearly"]):::completed
+    xefcb70fd373e934d["trocaire_cmam_data_raw"]:::completed --> x49ad837c8662aacd(["trocaire_cmam_data"]):::completed
+    xab2ef7d5cf8c2a5a["trocaire_data_files"]:::completed --> xefcb70fd373e934d["trocaire_cmam_data_raw"]:::completed
     x768c673cc9e63582(["trocaire_data_files_list"]):::completed --> x2de3516cf4485518(["trocaire_data_file_names"]):::completed
-    x2de3516cf4485518(["trocaire_data_file_names"]):::completed --> xab2ef7d5cf8c2a5a["trocaire_data_files"]:::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xbd3f23f4f80bc001(["tsfp_plw_admissions_by_sex_monthly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xa4028d0478a08c4a(["tsfp_plw_admissions_by_sex_yearly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc8e187d255805f46(["tsfp_plw_admissions_monthly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x77f2fe6f084dca2c(["tsfp_plw_admissions_yearly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x15baf61e9ffb2262(["tsfp_u5_admissions_by_sex_monthly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b12cae56451f5ec(["tsfp_u5_admissions_by_sex_yearly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x7b6f17b702e81898(["tsfp_u5_admissions_monthly"]):::skipped
-    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x6bc4301a20d74330(["tsfp_u5_admissions_yearly"]):::skipped
+    x2de3516cf4485518(["trocaire_data_file_names"]):::completed --> xab2ef7d5cf8c2a5a["trocaire_data_files"]:::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xbd3f23f4f80bc001(["tsfp_plw_admissions_by_sex_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xa4028d0478a08c4a(["tsfp_plw_admissions_by_sex_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> xc8e187d255805f46(["tsfp_plw_admissions_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x77f2fe6f084dca2c(["tsfp_plw_admissions_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x15baf61e9ffb2262(["tsfp_u5_admissions_by_sex_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x7b12cae56451f5ec(["tsfp_u5_admissions_by_sex_yearly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x7b6f17b702e81898(["tsfp_u5_admissions_monthly"]):::completed
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::completed --> x6bc4301a20d74330(["tsfp_u5_admissions_yearly"]):::completed
     
   end
 ```
