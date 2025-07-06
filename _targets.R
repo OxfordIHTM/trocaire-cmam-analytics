@@ -148,7 +148,12 @@ output_targets <- tar_plan(
 
 ## Reporting targets
 report_targets <- tar_plan(
-  
+  tar_quarto(
+    name = data_review_report,
+    path = "reports/cmam-data-review.qmd",
+    working_directory = here::here(),
+    cue = tar_cue("always")
+  )
 )
 
 

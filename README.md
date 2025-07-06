@@ -113,8 +113,8 @@ The project repository is structured as follows:
 
 ### R version
 
-This project was built using `R 4.5.01. To manage R versions, it is
-recommended to use [`rig\`\](<https://github.com/r-lib/rig>) - an R
+This project was built using `R 4.5.1`. To manage R versions, it is
+recommended to use [`rig`](https://github.com/r-lib/rig) - an R
 installation manager - to be able to install multiple versions of R and
 switch between them as needed.
 
@@ -153,6 +153,8 @@ graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
   subgraph Graph
     direction LR
+    x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xf69487b7eb1bdf74(["data_review_report"]):::completed
+    xefcb70fd373e934d["trocaire_cmam_data_raw"]:::skipped --> xf69487b7eb1bdf74(["data_review_report"]):::completed
     x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xe1cb52acd9cb733d(["otp_admissions_by_sex_monthly"]):::skipped
     x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> xc5234a98b2b6e9c0(["otp_admissions_by_sex_yearly"]):::skipped
     x49ad837c8662aacd(["trocaire_cmam_data"]):::skipped --> x211a3b39dfafa3b3(["otp_admissions_monthly"]):::skipped

@@ -12,6 +12,11 @@ plot_admissions_sex <- function(df,
   title_text <- create_title_text(
     service = service, time_unit = time_unit, by_sex = TRUE
   )
+  subtitle_text <- paste(
+    create_subtitle_text(service = service),
+    paste0(min(df$year), " to ", max(df$year)),
+    sep = " - "
+  )
 
   df <- df |>
     dplyr::filter(eval(parse(text = serv_expr))) |>
@@ -40,8 +45,7 @@ plot_admissions_sex <- function(df,
         )
       ) +
       ggplot2::labs(
-        title = title_text,
-        subtitle = paste0(min(df$year), " to ", max(df$year)),
+        title = title_text, subtitle = subtitle_text,
         x = "Month", y = "Admissions"
       ) +
       ggplot2::facet_grid(
@@ -51,12 +55,12 @@ plot_admissions_sex <- function(df,
         grid = "XY", grid_col = oxthema::get_oxford_colour("stone")
       ) +
       ggplot2::theme(
-        legend.position = "top", 
+        legend.position = ifelse(service == "tsfp_plw", "none", "top"), 
         axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
       )
   } else {
     df |>
-      dplyr::summarise(n = sum(n), .by = c(year, district, sex)) |>
+      dplyr::summarise(n = sum(n, na.rm = TRUE), .by = c(year, district, sex)) |>
       ggplot2::ggplot(mapping = ggplot2::aes(x = year, y = n, fill = sex)) +
       ggplot2::geom_bar(stat = "identity", colour = NA) +
       ggplot2::scale_fill_manual(
@@ -67,13 +71,14 @@ plot_admissions_sex <- function(df,
         )
       ) +
       ggplot2::labs(
-        title = title_text,
-        subtitle = paste0(min(df$year), " to ", max(df$year)),
+        title = title_text, subtitle = subtitle_text,
         x = "Year", y = "Admissions"
       ) +
       oxthema::theme_oxford(
         grid = "XY", grid_col = oxthema::get_oxford_colour("stone")
       ) +
-      ggplot2::theme(legend.position = "top")
+      ggplot2::theme(
+        legend.position = ifelse(service == "tsfp_plw", "none", "top")
+      )
   }
 }

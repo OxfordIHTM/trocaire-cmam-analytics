@@ -10,6 +10,11 @@ plot_admissions <- function(df,
 
   serv_expr <- get_service_expression(service = service)
   title_text <- create_title_text(service = service, time_unit = time_unit)
+  subtitle_text <- paste(
+    create_subtitle_text(service = service),
+    paste0(min(df$year), " to ", max(df$year)),
+    sep = " - "
+  )
 
   df <- df |>
     dplyr::filter(eval(parse(text = serv_expr))) |>
@@ -35,7 +40,7 @@ plot_admissions <- function(df,
       ) +
       ggplot2::labs(
         title = title_text,
-        subtitle = paste0(min(df$year), " to ", max(df$year)),
+        subtitle = subtitle_text,
         x = "Month", y = "Admissions"
       ) +
       ggplot2::facet_wrap(. ~ district, nrow = 4) +
@@ -45,16 +50,18 @@ plot_admissions <- function(df,
       ggplot2::theme(legend.position = "top")
   } else {
     df |>
-      dplyr::summarise(total = sum(total), .by = c(year, district)) |>
+      dplyr::summarise(
+        total = sum(total, na.rm = TRUE), .by = c(year, district)
+      ) |>
       ggplot2::ggplot(
         mapping = ggplot2::aes(
           x = year, y = total, group = district, colour = district
         )
       ) +
-      ggplot2::geom_line() +
+      ggplot2::geom_line(linewidth = 1.5) +
       ggplot2::labs(
         title = title_text,
-        subtitle = paste0(min(df$year), " to ", max(df$year)),
+        subtitle = subtitle_text,
         x = "Year", y = "Admissions"
       ) +
       oxthema::theme_oxford(

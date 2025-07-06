@@ -84,7 +84,7 @@ trocaire-cmam-analytics
 
 ### R version
 
-This project was built using `R 4.5.01. To manage R versions, it is recommended to use [`rig`](https://github.com/r-lib/rig) - an R installation manager - to be able to install multiple versions of R and switch between them as needed.
+This project was built using `R 4.5.1`. To manage R versions, it is recommended to use [`rig`](https://github.com/r-lib/rig) - an R installation manager - to be able to install multiple versions of R and switch between them as needed.
 
 ### R package dependencies
 

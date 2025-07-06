@@ -24,24 +24,32 @@ create_title_text <- function(service = c("sc", "otp", "tsfp_u5", "tsfp_plw"),
                               time_unit = c("month", "year"),
                               by_sex = FALSE) {
   if (time_unit == "month") {
-    title_text <- dplyr::case_when(
-      service == "sc" ~ "Monthly Admissions for Stabilisation Centre",
-      service == "otp" ~ "Monthly Admissions for Outpatient Therapeutic Care Programme",
-      service == "tsfp_u5" ~ "Monthly Admissions for Targeted Supplementary Feeding Programme for Children Under-Five Years",
-      service == "tsfp_plw" ~ "Monthly Admissions for Targeted Supplementary Feeding Programme for Pregnant or Lactating Women"
-    )
+    title_text <- "Monthly Admissions"
   } else {
-    title_text <- dplyr::case_when(
-      service == "sc" ~ "Yearly Admissions for Stabilisation Centre",
-      service == "otp" ~ "Yearly Admissions for Outpatient Therapeutic Care Programme",
-      service == "tsfp_u5" ~ "Yearly Admissions for Targeted Supplementary Feeding Programme for Children Under-Five Years",
-      service == "tsfp_plw" ~ "Yearly Admissions for Targeted Supplementary Feeding Programme for Pregnant or Lactating Women"
-    )
+    title_text <- "Yearly Admissions"
   }
 
   ## if by_sex ----
-  if (by_sex) title_text <- paste0(title_text, " by Sex")
-  
+  if (by_sex) {
+    if (service != "tsfp_plw") {
+      title_text <- paste0(title_text, " by Sex")
+    }
+  }
+
   ## Return title_text ----
   title_text
+}
+
+#'
+#' Create sub-title text
+#' 
+
+create_subtitle_text <- function(service = c("sc", "otp", 
+                                             "tsfp_u5", "tsfp_plw")) {
+  dplyr::case_when(
+    service == "sc" ~ "Stabilisation Centre",
+    service == "otp" ~ "Outpatient Therapeutic Care Programme",
+    service == "tsfp_u5" ~ "Targeted Supplementary Feeding Programme for Children under Five Years",
+    service == "tsfp_plw" ~ "Targeted Supplementary Feeding Programme for Pregnant or Lactating Women"
+  )
 }
