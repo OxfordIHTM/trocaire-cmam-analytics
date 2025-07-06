@@ -35,9 +35,14 @@ for (f in list.files(here::here("R"), full.names = TRUE)) source (f)
 tar_load(
   c(
     trocaire_cmam_data_raw, trocaire_cmam_data, 
-    dplyr::starts_with("otp"),
-    dplyr::starts_with("tsfp"), 
-    dplyr::starts_with("sc")
+    otp_admissions_monthly, otp_admissions_yearly,
+    otp_admissions_by_sex_monthly, otp_admissions_by_sex_yearly,
+    sc_admissions_monthly, sc_admissions_yearly,
+    sc_admissions_by_sex_monthly, sc_admissions_by_sex_yearly,
+    tsfp_u5_admissions_monthly, tsfp_u5_admissions_yearly,
+    tsfp_u5_admissions_by_sex_monthly, tsfp_u5_admissions_by_sex_yearly,
+    tsfp_plw_admissions_monthly, tsfp_plw_admissions_yearly,
+    tsfp_plw_admissions_by_sex_monthly, tsfp_plw_admissions_by_sex_yearly
   )
 )
 ```
