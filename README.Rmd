@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![License for code](https://img.shields.io/badge/license (for code)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
 [![License for text](https://img.shields.io/badge/license (for writing)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
-![License for CMAM data](https://img.shields.io/badge/license (for CMAM data)-restricted-red)
+![License for CMAM data](https://img.shields.io/badge/license (for CMAM data)-restricted-yellow)
 [![License for other data](https://img.shields.io/badge/license (for other data)-CC0-blue)](https://creativecommons.org/public-domain/cc0/)
 [![test targets workflow](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/trocaire-cmam-analytics/actions/workflows/test-targets-workflow.yml)
 [![DOI](https://zenodo.org/badge/983366836.svg)](https://doi.org/10.5281/zenodo.15821555)
