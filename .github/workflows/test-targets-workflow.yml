@@ -44,7 +44,7 @@ jobs:
         
       - name: Run workflow
         run: |
-          targets::tar_make(quiet = FALSE)
+          targets::tar_make()
         shell: Rscript {0}
         
         
