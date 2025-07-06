@@ -435,4 +435,49 @@ sc_admissions_by_sex_monthly
 sc_admissions_by_sex_yearly
 ```
 
+## Other CMAM programme metrics
+
+Whilst tracking admissions-over-time is a metric that is used and reported for CMAM programmes, it is but one of many other metrics that are used to monitor and evaluate CMAM programmes. It would be important for a programme to be able to provide data to report on these other metrics.
+
+Other metrics usually monitored for CMAM programmes include:
+
+#### Defaulters-over-time
+
+This metric is reported hand-in-hand with admissions-over-time. This metric gives an indication of temporal trends/patterns of defaulting in the CMAM programme. An example of this can be viewed [here](https://katilingban.shinyapps.io/sudancmamdashboard/#section-responsiveness).
+
+#### Performance
+
+There are four performance metrics for CMAM programmes that are always reported:
+
+* Cure rate
+* Default rate
+* Death rate
+* Non-response rate
+
+These metrics are specifically used as an indicator of the clinical performance of the CMAM programme. There are also benchmarks as to the targets that a CMAM programme should reach in order to be considered high-performing.
+
+An example of this can be viewed [here](https://katilingban.shinyapps.io/sudancmamdashboard/#section-performance).
+
+#### Length of stay
+
+Length of stay (LOS) in the CMAM programme is also usually calculated and reported. It is another measure of the level of clinical performance of a CMAM programme.
+
+An example of this can be viewed [here](https://katilingban.shinyapps.io/sudancmamdashboard/#section-effectiveness).
+
+#### Weight gain
+
+Weight gain is another clinical performance indicator of a CMAM programme.
+
+An example of this can be viewed [here](https://katilingban.shinyapps.io/sudancmamdashboard/#section-effectiveness).
+
+#### Case-finding effectiveness
+
+Case-finding effectiveness of CMAM programmes can be measured using MUAC-at-admission. An example of this can be viewed [here](https://katilingban.shinyapps.io/sudancmamdashboard/#section-case-finding).
+
+#### Access
+
+Time-to-travel metric is usually used to measure accessibility of CMAM programmes. An example of this can be viewed [here](https://katilingban.shinyapps.io/sudancmamdashboard/#section-access).
+
+
+
 [^messydata]: As opposed to *tidy data* - a dataset in which 1. each variable forms a column; 2. each observation forms a row; and, 3. each type of observational unit forms a table.
