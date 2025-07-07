@@ -103,7 +103,15 @@ to install R package dependencies.
 
 ### Encryption
 
-This project uses encrypted environment variables and authentication keys for data retrieval managed using [`git-crypt`](https://github.com/AGWA/git-crypt). Collaborators will need to install `git-crypt` and then provide their GPG key to the authors to be added as an authorised user within the repository. To get a GPG key, [download and install GPG](https://www.gnupg.org/download/) and then [generate your GPG key pair](https://www.gnupg.org/gph/en/manual/c14.html). Then provide your GPG key id to the authors.
+This project uses encrypted environment variables and authentication keys for data retrieval managed using [`git-crypt`](https://github.com/AGWA/git-crypt). Collaborators will need to [install `git-crypt`](https://github.com/AGWA/git-crypt) and then provide their GPG key to the authors to be added as an authorised user within the repository. To get a GPG key, [download and install GPG](https://www.gnupg.org/download/) and then [generate your GPG key pair](https://www.gnupg.org/gph/en/manual/c14.html). Then provide your GPG key id to the authors.
+
+Once given permission into the project and GPG key id added to the repository, update your local version of the repository by doing a `git pull` and then unlock the encrypted files/folders of the repository by running the following command in Terminal from within the project directory:
+
+```bash
+git-crypt unlock
+```
+
+The encrypted components of the repository will now be decrypted and accessible for running the workflow (described below).
 
 ### The workflow
 
