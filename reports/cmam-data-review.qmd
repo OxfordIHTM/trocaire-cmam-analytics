@@ -392,7 +392,7 @@ tsfp_plw_admissions_by_sex_monthly
 tsfp_plw_admissions_by_sex_yearly
 ```
 
-### Stabilisation cetnre
+### Stabilisation centre
 
 ```{r}
 #| label: monthly-admissions-sc
